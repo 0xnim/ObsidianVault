@@ -9,7 +9,6 @@
 		<EnableDynamicLoading>true</EnableDynamicLoading>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
-
 		<!-- These properties are used for packing the plugin into a compressed format. -->
 		<PluginAssembly>ObsidianVault</PluginAssembly>
 		<PluginVersion>1.0.0.0</PluginVersion>
@@ -22,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-46" />
+		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-47" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0">
 			<ExcludeAssets>runtime</ExcludeAssets>
