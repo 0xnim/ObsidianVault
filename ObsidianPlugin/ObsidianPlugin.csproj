@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-33" />
+		<PackageReference Include="Obsidian.API" Version="1.0.0-nightly-46" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0">
 			<ExcludeAssets>runtime</ExcludeAssets>

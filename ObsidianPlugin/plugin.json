@@ -1,10 +1,10 @@
 {
-  "name": "Template Plugin",
-  "id": "change_me",
+  "name": "Vault",
+  "id": "com.nimq.vault",
   "version": "1.0.0",
   "authors": [
-    "Obsidian Team"
+    "Nim"
   ],
-  "description": "My plugin.",
-  "projectUrl": "https://github.com/ObsidianMC/ObsidianPlugin"
+  "description": "A library plugin for economy.",
+  "projectUrl": "https://github.com/0xnim/ObsidianVault"
 }

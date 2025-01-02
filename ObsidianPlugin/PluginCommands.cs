@@ -3,20 +3,35 @@ using Obsidian.API;
 using Obsidian.API.Commands;
 using Obsidian.API.Plugins;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace ObsidianPlugin;
+namespace VaultPluginNamespace;
 
 //All command modules are created with a scoped lifetime
-public class MyCommands : CommandModuleBase
+[CommandGroup("vault")]
+public class Vault : CommandModuleBase
 {
     [Inject]
-    public ILogger<MyCommands> Logger { get; set; }
-
-    [Command("mycommand")]
-    [CommandInfo("woop dee doo this command is from a plugin")]
-    public async Task MyCommandAsync()
+    public ILogger<Vault> Logger { get; set; }
+    
+    private VaultApi vaultApi;
+    
+    [RequirePermission(PermissionCheckType.Any, true, "vault.version", "vault.admin")]
+    [Command("version")]
+    [CommandInfo("Display the plugin version.")]
+    public async Task VersionCommandAsync()
     {
-        Logger.LogInformation("Testing Services as injected dependency");
-        await this.Player.SendMessageAsync("Hello from plugin command!");
+        await this.Player.SendMessageAsync($"Vault plugin version: {this.Plugin.Info.Version}");
     }
+    /*
+    [RequirePermission(PermissionCheckType.Any, true, "vault.admin", "vault.reload")]
+    [Command("reload")]
+    [CommandInfo("Reload the plugin.")]
+    public async Task ReloadCommandAsync()
+    {
+        await this.Player.SendMessageAsync("Reloading plugin...");
+        // TODO: Reload the plugin
+        await this.Player.SendMessageAsync("Plugin reloaded.");
+    }
+    */
 }
