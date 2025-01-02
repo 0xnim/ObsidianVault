@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Obsidian.API;
 using Obsidian.API.Plugins;
 
-namespace VaultPluginNamespace;
+namespace ObsidianVault;
 
 public class VaultPlugin : PluginBase
 {
@@ -22,6 +22,10 @@ public class VaultPlugin : PluginBase
         registry.MapCommands();
     }
     
+    public override void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<VaultApi>();
+    }
 
     public async ValueTask OnLoadAsync(IServer server)
     {

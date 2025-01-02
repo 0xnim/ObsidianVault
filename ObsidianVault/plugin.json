@@ -6,5 +6,12 @@
     "Nim"
   ],
   "description": "A library plugin for economy.",
-  "projectUrl": "https://github.com/0xnim/ObsidianVault"
+  "projectUrl": "https://github.com/0xnim/ObsidianVault",
+  "dependencies": [
+    {
+      "id": "com.nimq.vault",
+      "version": "1.0.0",
+      "required": true
+    }
+  ]
 }

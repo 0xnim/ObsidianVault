@@ -11,11 +11,11 @@
 
 
 		<!-- These properties are used for packing the plugin into a compressed format. -->
-		<PluginAssembly>ObsidianPlugin</PluginAssembly>
+		<PluginAssembly>ObsidianVault</PluginAssembly>
 		<PluginVersion>1.0.0.0</PluginVersion>
 		<PluginApiVersion>1.0.0</PluginApiVersion>
 		<PluginPublishDir>bin/$(Configuration)/</PluginPublishDir>
-		<RootNamespace>ObsidianPlugin</RootNamespace>
+		<RootNamespace>ObsidianVault</RootNamespace>
 		
 		<!-- this is optional but you can use this to sign your plugin. Right now the MSBuild task only supports RSA in XML format -->
 		<!--<PluginSigningKey>signing_key.xml</PluginSigningKey>-->

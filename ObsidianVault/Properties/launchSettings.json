@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ObsidianPlugin": {
+    "ObsidianVault": {
       "commandName": "Executable",
       "executablePath": "dotnet",
       "commandLineArgs": "ObsidianApp.dll",

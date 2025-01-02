@@ -5,7 +5,7 @@ using Obsidian.API.Plugins;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace VaultPluginNamespace;
+namespace ObsidianVault;
 
 //All command modules are created with a scoped lifetime
 [CommandGroup("vault")]

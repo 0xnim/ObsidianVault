@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Obsidian.API;
 using Obsidian.API.Plugins;
 
-namespace VaultPluginNamespace
+namespace ObsidianVault
 {
     public sealed class VaultApi
     {
