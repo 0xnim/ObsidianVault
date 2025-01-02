@@ -15,6 +15,7 @@
 		<PluginVersion>1.0.0.0</PluginVersion>
 		<PluginApiVersion>1.0.0</PluginApiVersion>
 		<PluginPublishDir>bin/$(Configuration)/</PluginPublishDir>
+		<RootNamespace>ObsidianPlugin</RootNamespace>
 		
 		<!-- this is optional but you can use this to sign your plugin. Right now the MSBuild task only supports RSA in XML format -->
 		<!--<PluginSigningKey>signing_key.xml</PluginSigningKey>-->
