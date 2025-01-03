@@ -14,7 +14,7 @@ public class VaultPlugin : PluginBase
 {
     [Inject]
     public ILogger<VaultPlugin> Logger { get; set; }
-    private readonly string fileLocation = "economy.json";
+    private readonly string _fileLocation = "economy.json";
     public VaultApi EconomyApi { get; private set; }
     
     public override void ConfigureRegistry(IPluginRegistry registry)
@@ -32,7 +32,7 @@ public class VaultPlugin : PluginBase
         Logger.LogInformation("VaultPlugin loading ...!");
 
         EconomyApi = new VaultApi();
-        await LoadEconomyAsync(fileLocation);
+        await LoadEconomyAsync(_fileLocation);
         
         Logger.LogInformation("VaultPlugin loaded!");
     }
@@ -40,7 +40,7 @@ public class VaultPlugin : PluginBase
     public async ValueTask OnUnloadAsync()
     {
         Logger.LogInformation("VaultPlugin unloading ...!");
-        await SaveEconomyAsync(fileLocation);
+        await SaveEconomyAsync(_fileLocation);
         Logger.LogInformation("VaultPlugin unloaded!");
     }
     

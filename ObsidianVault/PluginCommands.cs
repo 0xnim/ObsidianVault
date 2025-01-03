@@ -3,7 +3,6 @@ using Obsidian.API;
 using Obsidian.API.Commands;
 using Obsidian.API.Plugins;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace ObsidianVault;
 
@@ -13,8 +12,6 @@ public class Vault : CommandModuleBase
 {
     [Inject]
     public ILogger<Vault> Logger { get; set; }
-    
-    private VaultApi vaultApi;
     
     [RequirePermission(PermissionCheckType.Any, true, "vault.version", "vault.admin")]
     [Command("version")]
