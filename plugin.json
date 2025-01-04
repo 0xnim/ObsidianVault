@@ -1,0 +1,10 @@
+{
+  "name": "Vault",
+  "id": "com.nimq.vault",
+  "version": "1.0.0",
+  "authors": [
+    "Nim"
+  ],
+  "description": "A library plugin for economy.",
+  "projectUrl": "https://github.com/0xnim/ObsidianVault"
+}
