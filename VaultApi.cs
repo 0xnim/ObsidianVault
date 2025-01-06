@@ -70,7 +70,7 @@ namespace ObsidianVault
 
         public Dictionary<string, double> GetData()
         {
-            return new Dictionary<string, double>(playerVaults);
+            return playerVaults;
         }
 
         internal void LoadData(Dictionary<string, double> data)

@@ -10,7 +10,8 @@ public class VaultPlugin : PluginBase
     [Inject]
     public ILogger<VaultPlugin> Logger { get; set; }
     private readonly string _fileLocation = "economy.json";
-    public VaultApi EconomyApi { get; private set; }
+    [Inject]
+    private VaultApi EconomyApi { get; set; }
     
     public override void ConfigureRegistry(IPluginRegistry registry)
     {
@@ -22,14 +23,16 @@ public class VaultPlugin : PluginBase
         services.AddSingleton<VaultApi>();
     }
     
-    public override async ValueTask OnLoadedAsync(IServer server)
+    public override ValueTask OnLoadedAsync(IServer server)
     {
-        Logger.LogInformation("VaultPlugin loading ...!");
-
-        EconomyApi = new VaultApi();
-        await LoadEconomyAsync(_fileLocation);
-        
         Logger.LogInformation("VaultPlugin loaded!");
+        return default;
+    }
+    
+    public override async ValueTask OnServerReadyAsync(IServer server)
+    {
+        await LoadEconomyAsync(_fileLocation);
+        Logger.LogInformation("VaultPlugin ready!");
     }
     
     public override async ValueTask OnUnloadingAsync()
@@ -70,18 +73,24 @@ public class VaultPlugin : PluginBase
     {
         try
         {
+            Console.WriteLine("saving");
             var data = EconomyApi.GetData();
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            Console.WriteLine("json");
             var directory = Path.GetDirectoryName(filePath);
+            Console.WriteLine("directory1");
             if (directory != null)
             {
                 Directory.CreateDirectory(directory); // Ensure directory exists
+                Console.WriteLine("directory2");
             }
             await File.WriteAllTextAsync(filePath, json);
+            Console.WriteLine("file");
             Logger.LogInformation("Economy data saved.");
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex);
             Logger.LogError($"Error saving economy data: {ex.Message}");
         }
     }
