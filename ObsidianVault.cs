@@ -3,47 +3,50 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace ObsidianVault; 
+namespace ObsidianVault;
 
 public class VaultPlugin : PluginBase
 {
     [Inject]
     public ILogger<VaultPlugin> Logger { get; set; }
+
     private readonly string _fileLocation = "economy.json";
+    
     [Inject]
+    public IServiceProvider ServiceProvider { get; set; }
+
     private VaultApi EconomyApi { get; set; }
     
     public override void ConfigureRegistry(IPluginRegistry registry)
     {
         registry.MapCommands();
     }
-    
+
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<VaultApi>();
+        EconomyApi = new VaultApi();
+        services.AddSingleton<VaultApi>(EconomyApi);
     }
-    
+
     public override ValueTask OnLoadedAsync(IServer server)
     {
         Logger.LogInformation("VaultPlugin loaded!");
         return default;
     }
-    
+
     public override async ValueTask OnServerReadyAsync(IServer server)
     {
         await LoadEconomyAsync(_fileLocation);
         Logger.LogInformation("VaultPlugin ready!");
     }
-    
+
     public override async ValueTask OnUnloadingAsync()
     {
         Logger.LogInformation("VaultPlugin unloading ...!");
-        // do a console log directly to the console
-        Console.WriteLine("VaultPlugin unloading ...!");
         await SaveEconomyAsync(_fileLocation);
         Logger.LogInformation("VaultPlugin unloaded!");
     }
-    
+
     private async Task LoadEconomyAsync(string filePath)
     {
         if (File.Exists(filePath))
@@ -68,31 +71,24 @@ public class VaultPlugin : PluginBase
             Logger.LogWarning("Economy data file not found. Starting fresh.");
         }
     }
-    
+
     private async Task SaveEconomyAsync(string filePath)
     {
         try
         {
-            Console.WriteLine("saving");
             var data = EconomyApi.GetData();
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
-            Console.WriteLine("json");
             var directory = Path.GetDirectoryName(filePath);
-            Console.WriteLine("directory1");
             if (directory != null)
             {
-                Directory.CreateDirectory(directory); // Ensure directory exists
-                Console.WriteLine("directory2");
+                Directory.CreateDirectory(directory);
             }
             await File.WriteAllTextAsync(filePath, json);
-            Console.WriteLine("file");
             Logger.LogInformation("Economy data saved.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
             Logger.LogError($"Error saving economy data: {ex.Message}");
         }
     }
-    
 }
