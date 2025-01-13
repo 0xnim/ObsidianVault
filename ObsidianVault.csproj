@@ -9,7 +9,7 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
         <PluginAssembly>ObsidianVault</PluginAssembly>
-        <PluginVersion>1.0.0</PluginVersion>
+        <PluginVersion>1.0.1</PluginVersion>
         <PluginApiVersion>1.0.0</PluginApiVersion>
         <RootNamespace>ObsidianVault</RootNamespace>
 

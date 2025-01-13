@@ -11,9 +11,6 @@ public class VaultPlugin : PluginBase
     public ILogger<VaultPlugin> Logger { get; set; }
 
     private readonly string _fileLocation = "economy.json";
-    
-    [Inject]
-    public IServiceProvider ServiceProvider { get; set; }
 
     private VaultApi EconomyApi { get; set; }
     
@@ -79,7 +76,8 @@ public class VaultPlugin : PluginBase
             var data = EconomyApi.GetData();
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             var directory = Path.GetDirectoryName(filePath);
-            if (directory != null)
+            Console.WriteLine(directory);
+            if (!string.IsNullOrEmpty(directory))
             {
                 Directory.CreateDirectory(directory);
             }
