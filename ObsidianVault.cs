@@ -76,7 +76,6 @@ public class VaultPlugin : PluginBase
             var data = EconomyApi.GetData();
             var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             var directory = Path.GetDirectoryName(filePath);
-            Console.WriteLine(directory);
             if (!string.IsNullOrEmpty(directory))
             {
                 Directory.CreateDirectory(directory);
